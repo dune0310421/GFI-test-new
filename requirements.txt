@@ -1,0 +1,6 @@
+pandas
+scipy
+PyGithub
+textstat
+statsmodels
+nltk
