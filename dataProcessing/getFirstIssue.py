@@ -12,12 +12,13 @@ def get_first_issue(data):
             cls_id_dict[item['cls_id']].append(item['clst'])
     for key in cls_id_dict.keys():
         cls_id_dict[key].sort()
-    # print(len(cls_id_dict.keys()))
+    print("issue cnt in total: " + str(len(data)))
+    print("num of resolver: " + str(len(cls_id_dict.keys())))
 
     # 分离LTC和OTC，分别将id存入列表中
     LTC_id = []
     OTC_id = []
-    cnt = 0
+    # cnt = 0
     for key in cls_id_dict.keys():
         if len(cls_id_dict[key]) >= 2:
             #         print(key)
@@ -31,11 +32,9 @@ def get_first_issue(data):
         #             OTC_id.append(key)
         else:
             OTC_id.append(key)
-            cnt += 1
-    print(len(LTC_id))
-    print(len(OTC_id))
+            # cnt += 1
     # print(LTC_id)
-    print(cnt)
+    # print(cnt)
 
     # 分离LTC和OTC issues
     LTC_issues = []
@@ -47,6 +46,8 @@ def get_first_issue(data):
             OTC_issues.append(item)
         else:
             print(item['cls_id'])
+    print("issue cnt by LTC: " + str(len(LTC_issues)))
+    print("issue cnt by OTC: " + str(len(OTC_issues)))
 
     # 提取第一个issue
     LTC_1st_issues = []
@@ -65,8 +66,8 @@ def get_first_issue(data):
                 tmp_id_2.remove(item['cls_id'])
     #     else:
     #         print(item['cls_id'])
-    print(len(LTC_1st_issues))
-    print(len(OTC_1st_issues))
+    print("first issue cnt by LTC: " + str(len(LTC_1st_issues)))
+    print("first issue cnt by OTC: " + str(len(OTC_1st_issues)))
     # print(LTC_1st_issues[0])
 
     return LTC_1st_issues, OTC_1st_issues
